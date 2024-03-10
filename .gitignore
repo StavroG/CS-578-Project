@@ -1,0 +1,36 @@
+# Virtual environment
+venv/
+
+# Byte-compiled files
+__pycache__/
+
+# Environment variable file
+.env
+
+# Compiled Python files
+*.pyc
+*.pyo
+*.pyd
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Output of the 'coverage' tool
+.coverage
+
+# Python-specific files
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Visual Studio Code settings
+.vscode/
+
+# Ignore the encoded data
+encoded/*
+
+# Ignore the decoded data
+decoded/*
