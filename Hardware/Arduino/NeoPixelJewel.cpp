@@ -1,7 +1,7 @@
 #include <Adafruit_NeoPixel.h>
 
-#define DELAYMS 50
-#define BRIGHTNESS 20
+#define DELAYMS 75
+#define BRIGHTNESS 100
 
 using namespace std;
 
