@@ -1,5 +1,7 @@
 #include "C:\Users\Ipacheco\source\repos\CS-578-Project\Hardware\Arduino\NeoPixelJewel.cpp"
 
+//NeoPixelJewel
+//https://github.com/adafruit/Adafruit_NeoPixel
 #define LED_PIN 3
 #define NUM_PIXELS 7
 #define TYPE NEO_RGBW + NEO_KHZ800
