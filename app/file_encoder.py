@@ -25,29 +25,26 @@ def encode_and_write(file_name, byte_data):
     # Convert byte data to bits
     bit_data = bytes_to_bits(byte_data)
 
-    # Write the bits to a new or existing .bin file
+    # Convert byte data to bits
     with open(output_file_path, "wb") as file:
         file.write(bit_data)
 
-# Driver code for the encoder
-# Check to make sure the user provides the path to the file they want to encode
-if len(sys.argv) != 2:
-    print("Usage: python file_encoder.py \"path to file\"")
-    sys.exit(1)
-else:
+    return output_file_path
+
+def main(file_path):
     start_time = time.time()
-
-    mp4_file_path = sys.argv[1]
-    file_name, file_extension = os.path.splitext(os.path.basename(mp4_file_path))
-
-    # Make sure the user only passes in a .mp4 file
-    if(file_extension != ".mp4"):
+    file_name, file_extension = os.path.splitext(os.path.basename(file_path))
+    if file_extension != ".mp4":
         print("Error: The input must be a .mp4 file")
         sys.exit(1)
-
-    byte_data = read_mp4_file(mp4_file_path)
-    encode_and_write(file_name, byte_data)
-    
+    byte_data = read_mp4_file(file_path)
+    encoded_file_path = encode_and_write(file_name, byte_data)
     end_time = time.time()
-
     print("Elapsed time:", end_time - start_time, "seconds")
+    return encoded_file_path
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python file_encoder.py \"path to file\"")
+        sys.exit(1)
+    main(sys.argv[1])

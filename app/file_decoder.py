@@ -7,10 +7,10 @@ import numpy as np
 def read_binary_file(file_path):
     with open(file_path, 'rb') as file:
         binary_data = file.read()
-        
+
     return binary_data
 
-# Convert the binary data back to bytes
+# Converts the binary data back into bytes
 def bits_to_bytes(binary_data):
     byte_data = np.packbits(np.frombuffer(binary_data, dtype=np.uint8))
     return byte_data
@@ -29,25 +29,26 @@ def decode_and_write(file_name, binary_data):
     with open(output_file_path, "wb") as file:
         file.write(byte_data)
 
-# Driver code for the decoder
-# Check to make sure the user provides the path to the file they want to decode
-if len(sys.argv) != 2:
-    print("Usage: python file_decoder.py \"path to binary file\"")
-    sys.exit(1)
-else:
-    start_time = time.time()
+    return output_file_path
 
-    binary_file_path = sys.argv[1]
-    file_name, file_extension = os.path.splitext(os.path.basename(binary_file_path))
+def main(file_path):
+    start_time = time.time()
+    file_name, file_extension = os.path.splitext(os.path.basename(file_path))
 
     # Make sure the user only passes in a .bin file
-    if(file_extension != ".bin"):
+    if file_extension != ".bin":
         print("Error: The input must be a .bin file")
         sys.exit(1)
 
-    binary_data = read_binary_file(binary_file_path)
-    decode_and_write(file_name, binary_data)
+    binary_data = read_binary_file(file_path)
+    decoded_file_path = decode_and_write(file_name, binary_data)
 
     end_time = time.time()
-
     print("Elapsed time:", end_time - start_time, "seconds")
+    return decoded_file_path
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python file_decoder.py \"path to binary file\"")
+        sys.exit(1)
+    main(sys.argv[1])
