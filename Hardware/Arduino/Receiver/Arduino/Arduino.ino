@@ -1,18 +1,14 @@
-#include "C:\Users\Ipacheco\source\repos\CS-578-Project\Hardware\Arduino\UxcellPhotodiode.cpp"
-
-#define DIODE_DIGITAL_PIN 4
-#define DIODE_ANALOG_PIN A0
-#define MODE 0 //0 - digital : 1- analog
+#include "C:\Users\Ipacheco\source\repos\CS-578-Project\Hardware\Arduino\LiFi.cpp"
 
 using namespace std;
 
-UxcellPhotodiode diode = UxcellPhotodiode(DIODE_DIGITAL_PIN, MODE);
+LiFi lifi = LiFi();
 
 void setup() {
   Serial.begin(9600);
-  diode.initialize();
+  lifi.initializeReciever();
 }
 
 void loop() {
-  Serial.println(diode.read());
+  lifi.recieveLoop();
 }
