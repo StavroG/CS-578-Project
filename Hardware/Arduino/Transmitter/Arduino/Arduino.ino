@@ -1,21 +1,14 @@
-#include "C:\Users\Ipacheco\source\repos\CS-578-Project\Hardware\Arduino\NeoPixelJewel.cpp"
-
-#define LED_PIN 3
-#define NUM_PIXELS 7
-#define TYPE NEO_RGBW + NEO_KHZ800
+#include "C:\Users\Ipacheco\source\repos\CS-578-Project\Hardware\Arduino\LiFi.cpp"
 
 using namespace std;
 
-NeoPixelJewel led = NeoPixelJewel(LED_PIN, NUM_PIXELS, TYPE);
+LiFi lifi = LiFi();
 
 void setup() {
-  led.initialize();
+  Serial.begin(9600);
+  lifi.initializeTransmitter();
 }
 
 void loop() {
-  led.turnOn();
-  led.turnOff();
-  led.turnOn(255,0,0);
-  led.turnOn(0,255,0);
-  led.turnOn(0,0,255);
+  lifi.transmitLoop();
 }
