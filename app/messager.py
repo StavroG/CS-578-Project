@@ -59,7 +59,7 @@ def receive_gui(ser):
         message = bytearray()  # accumulate message content here
 
         while True:
-            data = ser.read(64) # read in one packet at a time
+            data = ser.read(ser.in_waiting) # read what is currently available to be read
             if data:
                 buffer.extend(data)
 
@@ -120,6 +120,7 @@ def send_message(message, ser, text_area):
         if i + max_data_length >= len(byte_message):
             packet += EOM  # add the EOM tto only the last packet
         ser.write(packet)
+        time.sleep(0.1) # this delay hepled fix the ser.in_waiting issues with multiple packets
         text_area.insert(tk.END, f'Sent packet: {packet}\n')
 
 if __name__ == "__main__":
