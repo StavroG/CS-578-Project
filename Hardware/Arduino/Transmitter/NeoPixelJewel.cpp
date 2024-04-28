@@ -1,6 +1,6 @@
 #include <Adafruit_NeoPixel.h>
 
-#define DELAYMS 300
+#define DELAYMS 30
 #define BRIGHTNESS 33
 
 #define LED_PIN 3
