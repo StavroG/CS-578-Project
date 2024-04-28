@@ -3,7 +3,7 @@
 #include "C:\Users\Ipacheco\source\repos\CS-578-Project\Hardware\Arduino\Receiver\UxcellPhotodiode.cpp"
 #include "C:\Users\Ipacheco\source\repos\CS-578-Project\Hardware\Arduino\Receiver\HiLetgoRGBColorSensor.cpp"
 
-#define DELAYMS 300
+#define DELAYMS 30
 
 using namespace std;
 
@@ -39,7 +39,7 @@ class LiFi
 		}
 		
 		led->turnOn();
-		delay(1000);
+		delay(100);
 	}
 	
 	void readByte() {
